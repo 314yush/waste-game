@@ -4,6 +4,50 @@ import WasteItem from '../components/WasteItem';
 import Bin from '../components/Bin';
 import WinnerDialog from '../components/WinnerDialog';
 
+import { createWeb3Modal } from '@web3modal/wagmi/react'
+import { defaultWagmiConfig } from '@web3modal/wagmi/react/config'
+
+import { WagmiProvider } from 'wagmi'
+import { base } from 'wagmi/chains'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+// 0. Setup queryClient
+const queryClient = new QueryClient()
+
+// 1. Your Reown Cloud project ID
+const projectId = '13232493a8f04fc1cd4211550d0d1b86'
+
+// 2. Create wagmiConfig
+const metadata = {
+  name: 'waste-game',
+  description: 'AppKit Example',
+  url: 'https://reown.com/appkit', // origin must match your domain & subdomain
+  icons: ['https://assets.reown.com/reown-profile-pic.png']
+}
+
+const chains = [base]
+const config = defaultWagmiConfig({
+  chains,
+  projectId,
+  metadata,
+})
+
+// 3. Create modal
+createWeb3Modal({
+  wagmiConfig: config,
+  projectId,
+  enableAnalytics: true, // Optional - defaults to your Cloud configuration
+  enableOnramp: true // Optional - false as default
+})
+
+export function Web3ModalProvider({ children }) {
+  return (
+    <WagmiProvider config={config}>
+      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+    </WagmiProvider>
+  )
+}
+
 
 const wasteItems = [
     // Wet Waste (20 items)
