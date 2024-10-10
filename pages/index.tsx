@@ -207,7 +207,6 @@ export default function Home() {
             onDrop={handleDrop}
             fillLevel={binLevels[category]}
             isCorrectBin={correctBin === category}
-            canDrop={!!currentItem}
           />
         ))}
       </div>
