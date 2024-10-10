@@ -6,14 +6,24 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["waste", "segregation", "game", "education"],
+  "author": "Your Name",
   "license": "ISC",
   "dependencies": {
-    "next": "^12.0.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "next": "^13.4.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "@types/node": "^18.15.11",
+    "eslint": "^8.47.0",
+    "eslint-config-next": "^13.4.19"
   }
 }
